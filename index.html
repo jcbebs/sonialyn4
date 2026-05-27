@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HCI Final Exam Practice Quiz</title>
+<title>HCI Final Exam Reviewer</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -52,13 +53,11 @@ body{
     background:#1e293b;
     color:white;
     cursor:pointer;
-    transition:0.3s;
     font-weight:bold;
 }
 
-.tab-btn:hover,
 .tab-btn.active{
-    background:#3b82f6;
+    background:#2563eb;
 }
 
 .quiz-section{
@@ -74,7 +73,7 @@ body{
     padding:20px;
     border-radius:18px;
     margin-bottom:18px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
 }
 
 .question{
@@ -96,6 +95,14 @@ body{
     background:#475569;
 }
 
+.correct{
+    background:#065f46 !important;
+}
+
+.wrong{
+    background:#991b1b !important;
+}
+
 .answer{
     margin-top:12px;
     padding:12px;
@@ -104,10 +111,10 @@ body{
     display:none;
 }
 
-.show-btn{
-    margin-top:10px;
-    padding:10px 16px;
+.show-answer{
+    margin-top:12px;
     border:none;
+    padding:10px 14px;
     border-radius:10px;
     background:#2563eb;
     color:white;
@@ -115,23 +122,18 @@ body{
     font-weight:bold;
 }
 
-.show-btn:hover{
-    background:#1d4ed8;
-}
-
 @media(max-width:768px){
-    .title h1{
-        font-size:1.5rem;
-    }
 
-    .question{
-        font-size:1rem;
-    }
-
-    .tab-btn{
-        width:100%;
-    }
+.title h1{
+    font-size:1.5rem;
 }
+
+.tab-btn{
+    width:100%;
+}
+
+}
+
 </style>
 </head>
 
@@ -141,516 +143,311 @@ body{
 
 <div class="title">
 <h1>HCI FINAL EXAM PRACTICE QUIZ</h1>
-<p>Hard Mode Reviewer • Mobile Friendly • Flashcard Style</p>
+<p>Hard Multiple Choice Reviewer • Mobile Friendly</p>
 </div>
 
 <div class="tabs">
-<button class="tab-btn active" onclick="showTab('quiz1', this)">Chapter 6</button>
-<button class="tab-btn" onclick="showTab('quiz2', this)">Chapter 7</button>
-<button class="tab-btn" onclick="showTab('quiz3', this)">Chapter 8</button>
+<button class="tab-btn active" onclick="showTab('ch6', this)">Chapter 6</button>
+<button class="tab-btn" onclick="showTab('ch7', this)">Chapter 7</button>
+<button class="tab-btn" onclick="showTab('ch8', this)">Chapter 8</button>
 </div>
 
-<!-- ================= CHAPTER 6 ================= -->
+<!-- CHAPTER 6 -->
 
-<div id="quiz1" class="quiz-section active">
+<div id="ch6" class="quiz-section active">
 
-<script>
-const ch6 = [
-{
-q:"1. What is the primary purpose of software engineering in HCI?",
-a:"To understand and manage the software design process or lifecycle."
-},
-{
-q:"2. Which lifecycle activity focuses on identifying modules to be implemented separately?",
-a:"Detailed Design"
-},
-{
-q:"3. In the waterfall model, what phase comes after coding and unit testing?",
-a:"Integration and testing"
-},
-{
-q:"4. Verification means ________.",
-a:"Designing the product right"
-},
-{
-q:"5. Validation means ________.",
-a:"Designing the right product"
-},
-{
-q:"6. What is the formality gap?",
-a:"The difference between theory and real-world practice."
-},
-{
-q:"7. Why is validation partly subjective?",
-a:"Because correctness often depends on human judgment."
-},
-{
-q:"8. What lifecycle model is considered too linear for interactive systems?",
-a:"Waterfall Model"
-},
-{
-q:"9. Why are feedback loops important in interactive systems?",
-a:"Because requirements and usability evolve during development."
-},
-{
-q:"10. What is the ultimate test of usability engineering?",
-a:"Measurement of user experience"
-},
-{
-q:"11. What does a usability specification contain?",
-a:"Usability attribute, measuring concept, measuring method, and target levels."
-},
-{
-q:"12. In usability specifications, what does 'planned level' refer to?",
-a:"The desired usability target for the final system."
-},
-{
-q:"13. Which ISO/IEC 25010 criterion measures ease of use?",
-a:"Usability"
-},
-{
-q:"14. Which ISO/IEC 25010 criterion refers to protection from unauthorized access?",
-a:"Security"
-},
-{
-q:"15. Which ISO/IEC 25010 criterion checks if the system works consistently?",
-a:"Reliability"
-},
-{
-q:"16. What type of prototype is discarded after learning from it?",
-a:"Throw-away prototype"
-},
-{
-q:"17. Which prototyping approach gradually evolves into the final system?",
-a:"Evolutionary prototyping"
-},
-{
-q:"18. Which prototype approach builds components separately?",
-a:"Incremental prototyping"
-},
-{
-q:"19. What prototyping technique involves humans simulating system functions?",
-a:"Wizard of Oz technique"
-},
-{
-q:"20. What is design inertia?",
-a:"Early bad design decisions remain throughout development."
-},
-{
-q:"21. What is design rationale?",
-a:"Information explaining why a system is designed the way it is."
-},
-{
-q:"22. One benefit of design rationale is ________.",
-a:"Reuse of design knowledge"
-},
-{
-q:"23. Which type of design rationale preserves order of deliberation?",
-a:"Process-oriented"
-},
-{
-q:"24. Which design rationale focuses on alternatives after decisions?",
-a:"Structure-oriented"
-},
-{
-q:"25. What does IBIS stand for?",
-a:"Issue-Based Information System"
-},
-{
-q:"26. In IBIS, what are potential resolutions called?",
-a:"Positions"
-},
-{
-q:"27. In QOC, what does Q stand for?",
-a:"Questions"
-},
-{
-q:"28. In QOC, what evaluates options?",
-a:"Criteria"
-},
-{
-q:"29. What is the main purpose of psychological design rationale?",
-a:"To make design consequences for users explicit."
-},
-{
-q:"30. What are scenarios used for in psychological design rationale?",
-a:"To test tasks supported by the system."
-},
-{
-q:"31. Which lifecycle activity captures what the system should provide?",
-a:"Requirements Specification"
-},
-{
-q:"32. Which lifecycle activity factors the system into major components?",
-a:"Architectural Design"
-},
-{
-q:"33. Why is iterative design important?",
-a:"Because requirements are often incomplete initially."
-},
-{
-q:"34. Which criterion checks if software runs on different platforms?",
-a:"Portability"
-},
-{
-q:"35. Which criterion evaluates resource efficiency?",
-a:"Performance Efficiency"
-}
-];
-
-document.write(ch6.map((item,index)=>`
 <div class="card">
-<div class="question">${item.q}</div>
-<button class="show-btn" onclick="toggleAnswer(this)">Show Answer</button>
-<div class="answer">${item.a}</div>
+<div class="question">1. Which lifecycle activity primarily identifies separately implementable modules?</div>
+
+<div class="option" onclick="check(this,false)">A. Architectural Design</div>
+<div class="option" onclick="check(this,true)">B. Detailed Design</div>
+<div class="option" onclick="check(this,false)">C. Requirements Specification</div>
+<div class="option" onclick="check(this,false)">D. Validation</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+Detailed Design refines architectural components into modules for implementation.
 </div>
-`).join(""));
-</script>
-
 </div>
 
-<!-- ================= CHAPTER 7 ================= -->
-
-<div id="quiz2" class="quiz-section">
-
-<script>
-const ch7 = [
-{
-q:"1. What is the main goal of interaction design?",
-a:"Maximum usability"
-},
-{
-q:"2. Which type of design rule has high authority but limited application?",
-a:"Standards"
-},
-{
-q:"3. Which design rule is more general but lower in authority?",
-a:"Guidelines"
-},
-{
-q:"4. Learnability refers to ________.",
-a:"Ease with which new users achieve effective interaction."
-},
-{
-q:"5. Flexibility refers to ________.",
-a:"Multiplicity of ways users and systems exchange information."
-},
-{
-q:"6. Robustness refers to ________.",
-a:"Support provided to users in achieving goals."
-},
-{
-q:"7. Predictability is based on ________.",
-a:"Past interaction history"
-},
-{
-q:"8. What is operation visibility related to?",
-a:"Predictability and observability"
-},
-{
-q:"9. Synthesizability means ________.",
-a:"Assessing effects of past actions."
-},
-{
-q:"10. Immediate honesty refers to ________.",
-a:"Immediate feedback after an action."
-},
-{
-q:"11. Familiarity relies on ________.",
-a:"Prior knowledge"
-},
-{
-q:"12. What is affordance?",
-a:"Properties suggesting how something should be used."
-},
-{
-q:"13. Generalizability means ________.",
-a:"Applying learned interaction to new situations."
-},
-{
-q:"14. Consistency means ________.",
-a:"Similar behavior in similar situations."
-},
-{
-q:"15. Dialogue initiative refers to ________.",
-a:"Freedom from system-imposed constraints."
-},
-{
-q:"16. Multithreading supports ________.",
-a:"Multiple tasks at the same time."
-},
-{
-q:"17. What is task migratability?",
-a:"Passing task responsibility between user and system."
-},
-{
-q:"18. Substitutivity means ________.",
-a:"Equivalent representations can replace each other."
-},
-{
-q:"19. Customizability may be done by whom?",
-a:"User or system"
-},
-{
-q:"20. Observability means ________.",
-a:"Ability to evaluate internal system state."
-},
-{
-q:"21. Recoverability refers to ________.",
-a:"Correcting actions after errors."
-},
-{
-q:"22. Responsiveness concerns ________.",
-a:"Rate of communication perceived by the user."
-},
-{
-q:"23. Task conformance measures ________.",
-a:"How system services support user tasks."
-},
-{
-q:"24. ISO 9241 defines usability using what 3 terms?",
-a:"Effectiveness, efficiency, satisfaction"
-},
-{
-q:"25. What are broad-brush design rules called?",
-a:"Golden rules and heuristics"
-},
-{
-q:"26. Which heuristic says users should easily undo actions?",
-a:"Permit easy reversal of actions"
-},
-{
-q:"27. Which Norman principle emphasizes visibility?",
-a:"Make things visible"
-},
-{
-q:"28. Which Norman principle focuses on mappings?",
-a:"Get the mappings right"
-},
-{
-q:"29. HCI design patterns originated from what field?",
-a:"Architecture"
-},
-{
-q:"30. What is a design pattern?",
-a:"Invariant solution to a recurring problem in a context."
-},
-{
-q:"31. Patterns are linked together in what?",
-a:"Pattern languages"
-},
-{
-q:"32. Patterns capture design practice, not ________.",
-a:"Theory"
-},
-{
-q:"33. Which rule says frequent users should have shortcuts?",
-a:"Shneiderman’s 2nd Golden Rule"
-},
-{
-q:"34. Which rule says systems should provide informative feedback?",
-a:"Shneiderman’s 3rd Golden Rule"
-},
-{
-q:"35. Which principle says systems should support user control?",
-a:"Internal locus of control"
-}
-];
-
-document.write(ch7.map((item,index)=>`
 <div class="card">
-<div class="question">${item.q}</div>
-<button class="show-btn" onclick="toggleAnswer(this)">Show Answer</button>
-<div class="answer">${item.a}</div>
+<div class="question">2. Validation in software engineering refers to:</div>
+
+<div class="option" onclick="check(this,false)">A. Ensuring code compiles successfully</div>
+<div class="option" onclick="check(this,false)">B. Designing the product right</div>
+<div class="option" onclick="check(this,true)">C. Designing the right product</div>
+<div class="option" onclick="check(this,false)">D. Reducing development cost</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+Validation checks whether the correct product is being built for users.
 </div>
-`).join(""));
-</script>
-
 </div>
 
-<!-- ================= CHAPTER 8 ================= -->
-
-<div id="quiz3" class="quiz-section">
-
-<script>
-const ch8 = [
-{
-q:"1. What are the three layers of development tools?",
-a:"Windowing systems, interaction toolkits, and UIMS."
-},
-{
-q:"2. What is the purpose of a windowing system?",
-a:"To support independent processes and resource sharing."
-},
-{
-q:"3. Device independence means ________.",
-a:"Programs work without depending on specific hardware."
-},
-{
-q:"4. What imaging model uses pixels?",
-a:"Pixel imaging model"
-},
-{
-q:"5. What does resource sharing support?",
-a:"Simultaneous user tasks"
-},
-{
-q:"6. Which architecture gives maximum portability?",
-a:"Separate management role as an application"
-},
-{
-q:"7. What does the X protocol define?",
-a:"Server-client communication"
-},
-{
-q:"8. Which architecture uses clients and servers?",
-a:"X Windows Architecture"
-},
-{
-q:"9. What type of programming uses event loops?",
-a:"Read-evaluation loop"
-},
-{
-q:"10. Notification-based systems rely on ________.",
-a:"Callbacks or handlers"
-},
-{
-q:"11. Modal dialog boxes are easier with what approach?",
-a:"Event-loop"
-},
-{
-q:"12. Non-modal dialog boxes are easier with what approach?",
-a:"Notification-based"
-},
-{
-q:"13. What warning is given about implementation?",
-a:"Implementation should not drive design."
-},
-{
-q:"14. Toolkits program using what objects?",
-a:"Interaction objects/widgets"
-},
-{
-q:"15. Toolkits promote consistency through ________.",
-a:"Similar look and feel"
-},
-{
-q:"16. What does AWT stand for?",
-a:"Abstract Windowing Toolkit"
-},
-{
-q:"17. Swing is built on top of ________.",
-a:"AWT"
-},
-{
-q:"18. Swing uses which architecture?",
-a:"MVC"
-},
-{
-q:"19. What does UIMS stand for?",
-a:"User Interface Management System"
-},
-{
-q:"20. Why are toolkits difficult for non-programmers?",
-a:"Because they require programming knowledge."
-},
-{
-q:"21. UIMS improves portability by ________.",
-a:"Separating presentation and application semantics."
-},
-{
-q:"22. Which model divides interface into presentation, dialogue, and functionality?",
-a:"Seeheim Model"
-},
-{
-q:"23. Lexical feedback refers to ________.",
-a:"Physical movements like mouse movement."
-},
-{
-q:"24. Syntactic feedback refers to ________.",
-a:"Interface structure feedback like menu highlights."
-},
-{
-q:"25. Semantic feedback refers to ________.",
-a:"Meaningful application changes."
-},
-{
-q:"26. Why is rapid semantic feedback important in drawing systems?",
-a:"Because users need immediate meaningful response."
-},
-{
-q:"27. MVC stands for ________.",
-a:"Model-View-Controller"
-},
-{
-q:"28. In MVC, which component handles rendering?",
-a:"View"
-},
-{
-q:"29. In MVC, which component processes input?",
-a:"Controller"
-},
-{
-q:"30. In PAC, what does A stand for?",
-a:"Abstraction"
-},
-{
-q:"31. Which model is considered cleaner but less used than MVC?",
-a:"PAC"
-},
-{
-q:"32. Which specification technique draws components visually?",
-a:"Graphical specification"
-},
-{
-q:"33. What is the drawback of graphical specification?",
-a:"Hard to see overall paths through the system."
-},
-{
-q:"34. What is dialogue control drift?",
-a:"Movement from internal control to presentation control."
-},
-{
-q:"35. Which paradigm programs interaction objects like buttons and menus?",
-a:"Toolkits"
-}
-];
-
-document.write(ch8.map((item,index)=>`
 <div class="card">
-<div class="question">${item.q}</div>
-<button class="show-btn" onclick="toggleAnswer(this)">Show Answer</button>
-<div class="answer">${item.a}</div>
+<div class="question">3. Which prototyping approach evolves directly into the final system?</div>
+
+<div class="option" onclick="check(this,false)">A. Throw-away</div>
+<div class="option" onclick="check(this,false)">B. Wizard of Oz</div>
+<div class="option" onclick="check(this,true)">C. Evolutionary</div>
+<div class="option" onclick="check(this,false)">D. Incremental simulation</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+Evolutionary prototyping continuously improves until it becomes the final product.
 </div>
-`).join(""));
-</script>
+</div>
+
+<div class="card">
+<div class="question">4. Which ISO/IEC 25010 criterion measures ability to operate on different platforms?</div>
+
+<div class="option" onclick="check(this,false)">A. Reliability</div>
+<div class="option" onclick="check(this,true)">B. Portability</div>
+<div class="option" onclick="check(this,false)">C. Maintainability</div>
+<div class="option" onclick="check(this,false)">D. Compatibility</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+Portability refers to running software on different environments or platforms.
+</div>
+</div>
+
+<div class="card">
+<div class="question">5. Which design rationale method is process-oriented?</div>
+
+<div class="option" onclick="check(this,false)">A. QOC</div>
+<div class="option" onclick="check(this,true)">B. IBIS</div>
+<div class="option" onclick="check(this,false)">C. MVC</div>
+<div class="option" onclick="check(this,false)">D. PAC</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+IBIS preserves order of deliberation and decision-making.
+</div>
+</div>
+
+<!-- ADD MORE QUESTIONS HERE -->
+
+</div>
+
+<!-- CHAPTER 7 -->
+
+<div id="ch7" class="quiz-section">
+
+<div class="card">
+<div class="question">1. Which usability principle focuses on extending interaction knowledge to new situations?</div>
+
+<div class="option" onclick="check(this,false)">A. Familiarity</div>
+<div class="option" onclick="check(this,true)">B. Generalizability</div>
+<div class="option" onclick="check(this,false)">C. Predictability</div>
+<div class="option" onclick="check(this,false)">D. Synthesizability</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+Generalizability allows users to apply previous knowledge to new contexts.
+</div>
+</div>
+
+<div class="card">
+<div class="question">2. Which flexibility principle supports simultaneous task execution?</div>
+
+<div class="option" onclick="check(this,false)">A. Dialogue initiative</div>
+<div class="option" onclick="check(this,false)">B. Substitutivity</div>
+<div class="option" onclick="check(this,true)">C. Multithreading</div>
+<div class="option" onclick="check(this,false)">D. Observability</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+Multithreading supports concurrent or interleaving tasks.
+</div>
+</div>
+
+<div class="card">
+<div class="question">3. ISO 9241 defines usability using which three concepts?</div>
+
+<div class="option" onclick="check(this,false)">A. Speed, utility, portability</div>
+<div class="option" onclick="check(this,false)">B. Learnability, flexibility, robustness</div>
+<div class="option" onclick="check(this,true)">C. Effectiveness, efficiency, satisfaction</div>
+<div class="option" onclick="check(this,false)">D. Visibility, consistency, recoverability</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+ISO 9241 defines usability as effectiveness, efficiency, and satisfaction.
+</div>
+</div>
+
+<div class="card">
+<div class="question">4. Which Norman principle emphasizes correct relationships between controls and effects?</div>
+
+<div class="option" onclick="check(this,true)">A. Get the mappings right</div>
+<div class="option" onclick="check(this,false)">B. Design for error</div>
+<div class="option" onclick="check(this,false)">C. Simplify the structure of tasks</div>
+<div class="option" onclick="check(this,false)">D. Standardize</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+Mappings determine how controls correspond to outcomes.
+</div>
+</div>
+
+<div class="card">
+<div class="question">5. Patterns in HCI are primarily intended to:</div>
+
+<div class="option" onclick="check(this,false)">A. Replace usability testing</div>
+<div class="option" onclick="check(this,true)">B. Reuse successful design knowledge</div>
+<div class="option" onclick="check(this,false)">C. Eliminate user feedback</div>
+<div class="option" onclick="check(this,false)">D. Reduce programming complexity only</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+Patterns capture reusable successful solutions to recurring problems.
+</div>
+</div>
+
+</div>
+
+<!-- CHAPTER 8 -->
+
+<div id="ch8" class="quiz-section">
+
+<div class="card">
+<div class="question">1. Which architecture provides maximum portability in windowing systems?</div>
+
+<div class="option" onclick="check(this,false)">A. OS kernel management</div>
+<div class="option" onclick="check(this,false)">B. Shared synchronization model</div>
+<div class="option" onclick="check(this,true)">C. Separate application management</div>
+<div class="option" onclick="check(this,false)">D. Centralized process control</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+Management as a separate application maximizes portability.
+</div>
+</div>
+
+<div class="card">
+<div class="question">2. Which programming approach commonly uses callback handlers?</div>
+
+<div class="option" onclick="check(this,false)">A. Event-loop programming</div>
+<div class="option" onclick="check(this,true)">B. Notification-based programming</div>
+<div class="option" onclick="check(this,false)">C. Sequential programming</div>
+<div class="option" onclick="check(this,false)">D. Batch programming</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+Notification systems rely on callback handlers for events.
+</div>
+</div>
+
+<div class="card">
+<div class="question">3. Swing is primarily based on which architecture?</div>
+
+<div class="option" onclick="check(this,false)">A. PAC</div>
+<div class="option" onclick="check(this,false)">B. Seeheim</div>
+<div class="option" onclick="check(this,true)">C. MVC</div>
+<div class="option" onclick="check(this,false)">D. IBIS</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+Swing toolkit uses the MVC architecture.
+</div>
+</div>
+
+<div class="card">
+<div class="question">4. Which type of feedback includes menu highlighting?</div>
+
+<div class="option" onclick="check(this,false)">A. Semantic</div>
+<div class="option" onclick="check(this,true)">B. Syntactic</div>
+<div class="option" onclick="check(this,false)">C. Lexical</div>
+<div class="option" onclick="check(this,false)">D. Abstract</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+Syntactic feedback relates to interface structure and selections.
+</div>
+</div>
+
+<div class="card">
+<div class="question">5. In MVC, which component manages screen rendering?</div>
+
+<div class="option" onclick="check(this,false)">A. Controller</div>
+<div class="option" onclick="check(this,true)">B. View</div>
+<div class="option" onclick="check(this,false)">C. Model</div>
+<div class="option" onclick="check(this,false)">D. Presenter</div>
+
+<button class="show-answer" onclick="toggleAnswer(this)">Show Explanation</button>
+
+<div class="answer">
+The View handles visual representation of data.
+</div>
+</div>
 
 </div>
 
 </div>
 
 <script>
-function toggleAnswer(button){
-    const answer = button.nextElementSibling;
-    if(answer.style.display === "block"){
-        answer.style.display = "none";
-        button.innerText = "Show Answer";
-    } else {
-        answer.style.display = "block";
-        button.innerText = "Hide Answer";
+
+function check(el,correct){
+
+    if(el.parentElement.classList.contains('answered')){
+        return;
+    }
+
+    el.parentElement.classList.add('answered');
+
+    if(correct){
+        el.classList.add('correct');
+    }else{
+        el.classList.add('wrong');
+
+        let options = el.parentElement.querySelectorAll('.option');
+
+        options.forEach(opt=>{
+            if(opt.getAttribute('onclick').includes('true')){
+                opt.classList.add('correct');
+            }
+        });
     }
 }
 
-function showTab(tabId, btn){
-    const sections = document.querySelectorAll('.quiz-section');
-    const buttons = document.querySelectorAll('.tab-btn');
+function toggleAnswer(btn){
 
-    sections.forEach(sec => sec.classList.remove('active'));
-    buttons.forEach(b => b.classList.remove('active'));
+    let ans = btn.nextElementSibling;
 
-    document.getElementById(tabId).classList.add('active');
+    if(ans.style.display === "block"){
+        ans.style.display = "none";
+    }else{
+        ans.style.display = "block";
+    }
+}
+
+function showTab(id,btn){
+
+    document.querySelectorAll('.quiz-section')
+    .forEach(sec=>sec.classList.remove('active'));
+
+    document.querySelectorAll('.tab-btn')
+    .forEach(b=>b.classList.remove('active'));
+
+    document.getElementById(id).classList.add('active');
+
     btn.classList.add('active');
 }
+
 </script>
 
 </body>
