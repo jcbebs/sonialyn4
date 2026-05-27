@@ -24,6 +24,257 @@
 .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.5rem}
 .tab{font-size:12px;padding:5px 14px;border-radius:20px;border:0.5px solid var(--color-border-secondary);cursor:pointer;color:var(--color-text-secondary);background:transparent}
 .tab.active{background:var(--color-background-secondary);color:var(--color-text-primary);font-weight:500}
+
+/* QUIZ CONTAINER */
+.qw{
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* SECTION HEADER */
+.sec-hdr{
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+    margin-top: 35px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ececec;
+}
+
+.sec-sub{
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 18px;
+}
+
+/* SCORE BAR */
+.sbar{
+    background: #f8f8f8;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.spill{
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    padding: 7px 14px;
+    border-radius: 30px;
+    font-size: 13px;
+    color: #555;
+}
+
+.snum{
+    font-weight: 700;
+    color: #111;
+}
+
+.pbar{
+    flex: 1;
+    min-width: 180px;
+    height: 10px;
+    background: #e7e7e7;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.pfill{
+    height: 100%;
+    background: linear-gradient(90deg,#4CAF50,#7ED957);
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+/* RESET BUTTON */
+.sbar button{
+    border: none;
+    background: #111827;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sbar button:hover{
+    background: #1f2937;
+    transform: translateY(-1px);
+}
+
+/* TABS */
+.tabs{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.tab{
+    border: 1px solid #d9d9d9;
+    background: #fafafa;
+    color: #555;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab:hover{
+    background: #f0f0f0;
+}
+
+.tab.active{
+    background: #111827;
+    color: white;
+    border-color: #111827;
+    font-weight: 600;
+}
+
+/* QUESTION CARD */
+.qcard{
+    background: #ffffff;
+    border: 1px solid #e4e4e4;
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 18px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: 0.2s ease;
+}
+
+.qcard:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* QUESTION NUMBER */
+.qnum{
+    font-size: 12px;
+    font-weight: 700;
+    color: #888;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* QUESTION TEXT */
+.qtxt{
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 16px;
+}
+
+/* OPTIONS */
+.opts{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.opt{
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    background: #fafafa;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.opt:hover{
+    background: #f2f2f2;
+    border-color: #bdbdbd;
+}
+
+/* OPTION LETTER */
+.ol{
+    font-weight: 700;
+    min-width: 18px;
+    color: #333;
+}
+
+/* CORRECT / WRONG */
+.opt.correct{
+    background: #eaf7e9;
+    border-color: #4CAF50;
+    color: #2f6b32;
+}
+
+.opt.wrong{
+    background: #fdecec;
+    border-color: #d64545;
+    color: #8f1f1f;
+}
+
+.opt.show-correct{
+    background: #eaf7e9;
+    border-color: #4CAF50;
+    color: #2f6b32;
+}
+
+/* FEEDBACK */
+.fb{
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    display: none;
+}
+
+.fb.c{
+    display: block;
+    background: #eaf7e9;
+    color: #2f6b32;
+}
+
+.fb.w{
+    display: block;
+    background: #fdecec;
+    color: #8f1f1f;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px){
+
+    .qw{
+        margin: 20px;
+        padding: 18px;
+    }
+
+    .qtxt{
+        font-size: 15px;
+    }
+
+    .opt{
+        font-size: 13px;
+    }
+
+    .sbar{
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pbar{
+        width: 100%;
+    }
+}
 </style>
 <div class="qw">
 <h2 class="sr-only">HCI practice quiz — 90+ questions across three topics</h2>
